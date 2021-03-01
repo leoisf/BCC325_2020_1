@@ -4,7 +4,6 @@ import heapq
 from scipy.spatial import distance
 import random
 
-
 class RandAgent(Agent):
     """
     This class implements an agent that explores the environmente randomly
@@ -65,7 +64,6 @@ class RandAgent(Agent):
         while (self.percepts['current_position'] != self.percepts['target']).any() and self.frontier:
             self.act()
         print(self.percepts['current_position'])
-
 
 class DFSAgent(Agent):
     """
@@ -142,7 +140,6 @@ class DFSAgent(Agent):
             self.act()
         print(self.percepts['current_position'])
 
-
 class BFSAgent(Agent):
     """
     This class implements an agent that explores the environmente randomly
@@ -212,7 +209,6 @@ class BFSAgent(Agent):
             self.act()
         print(self.percepts['current_position'])
 
-
 class AStarAgent(Agent):
     """
     This class implements an agent that explores the environmente randomly
@@ -254,7 +250,6 @@ class AStarAgent(Agent):
             dist = []
             for neighbor in viable_neighbors:
                 dist.append(distance.euclidean(neighbor, self.percepts['target']))
-                #print(dist)
             for neigbor in viable_neighbors:
                 pos = dist.index(max(dist))
                 insertF = True
@@ -263,7 +258,8 @@ class AStarAgent(Agent):
                         insertF= False
                 if insertF == True:
                     self.frontier = [self.path + [viable_neighbors[pos]]]+ self.frontier
-                dist[pos] = -1000
+                print(dist[pos])
+                dist[pos] = -1
             # Append neighbor to the path and add it to the frontier
     def run(self):
         """Keeps the agent acting until it finds the target
@@ -273,7 +269,6 @@ class AStarAgent(Agent):
             self.act()
         print(self.percepts['current_position'])
         print(self.path)
-
 
 class GreedyAgent():
     """

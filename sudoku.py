@@ -86,8 +86,37 @@ class Sudoku(Environment):
 
     # TODO
     def apply_GAC(self):
-        pass
-        
+        rm = []  
+        to_do = []
+        for row in self.csp:
+          for cell in row:
+              for cons in cell['C']:
+                 #print ('[{}, {}]'.format(cell['X'], cons))
+                 to_do.append((cell['X'], cons))
+        # for t in to_do:
+        #     print (t)  
+        for i in to_do :
+            arc = to_do.pop(0)
+            rm.append(arc)
+            viable = []
+            cons = arc[1]
+            v = arc[0]      
+            v2 = cons.scope[1]
+            if type(var2) != int:
+                for e in self.csp[var[0]][var[1]]['D']:
+                    viable = viable + [any([cons.condition(e, e2) for e2 in self.csp[var2[0]][v2[1]]['D']])]
+                for i, v in enumerate(viable):
+                    if (~v):
+                        del self.csp[var[0]][v[1]]['D'][i]
+                if  (~all(viable)):
+                    back = []
+                    for removed_arc in removed:
+                        if (var == removed_arc[1].scope[1]) and (removed_arc[1] != cons):
+                            back.append(removed_arc)
+                    for arc in back:
+                        to_do.append(arc)
+                        rm.remove(arc)
+
 def is_viable(sudoku, i, j, v):
     ''' Auxiliary method that verifies whether a value, v, can be assigned to position [i,j] in the sudoku
 

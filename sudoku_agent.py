@@ -46,7 +46,9 @@ class SudokuAgent(Agent):
                             self.sudoku[i][j] = 0
                     return
 
+        input('Solved - Press ENTER to see solution')
         pp_sudoku(self.sudoku)
+        input('Press ENTER to get out of here')
 
 
 def pp_sudoku(sudoku):

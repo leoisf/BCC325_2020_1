@@ -1,12 +1,12 @@
 from room import Room
 from path_finder_agents import RandAgent, DFSAgent, BFSAgent, GreedyAgent, AStarAgent
 
-# env = Room(room=[[0, 0, 1], [0, 0, 1], [0, 0, 0]], target=[2, 2])
-env = Room(prob=0.2, n=10, plot_on=True)
+env = Room(room=[[0, 0, 1], [0, 0, 1], [0, 0, 0]], target=[2, 2])
+#env = Room(prob=0.2, n=10, plot_on=True)
 #agent = RandAgent(env)
-#agent = DFSAgent(env)
+agent = DFSAgent(env)
 #agent = BFSAgent(env)
-agent = AStarAgent(env)
+#agent = AStarAgent(env)
 #agent = GreedyAgent(env)
 
 agent.run()

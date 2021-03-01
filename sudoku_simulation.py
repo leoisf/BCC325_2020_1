@@ -43,5 +43,7 @@ for c in ag.csp:
     for cell in c:
         print(cell)
 
+
+
 input('Press ENTER to start')
 ag.act()
