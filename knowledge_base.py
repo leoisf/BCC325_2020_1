@@ -39,7 +39,6 @@ class KB():
   
     def __init__(self, statements = []):
         ''' Class constructor
-
         Args:
             statements: a list of statements
         '''
@@ -63,7 +62,6 @@ class KB():
         
         Args: 
             atom
-
         Returns:
             clauses tha have 'atom' as head
         '''
